@@ -1,7 +1,10 @@
 import React from "react";
-import AppHeader from "../app-header/app-header";
-import SearchPanel from "../search-panel/search-panel";
-import TodoList from "../todo-list/todo-list.js";
+import AppHeader from "../app-header";
+import SearchPanel from "../search-panel";
+import TodoList from "../todo-list";
+import ItemStatusFilter from "../item-status-filter";
+
+import "./app.css";
 
 const App = () => {
 
@@ -12,10 +15,15 @@ const App = () => {
     ];
 
     return (
-        <div>
-            <AppHeader/>
-            <SearchPanel/>
+        <div className="todo-app">
+            <AppHeader toDo={1} done={3}/>
+            <div className="top-panel d-flex">
+                <SearchPanel/>
+                <ItemStatusFilter/>
+            </div>
+
             <TodoList todos={todoData} />
+            
         </div>
     );
 };
