@@ -6,7 +6,7 @@ import "./todo-list.css";
 export default class TodoList extends Component {
 
     render () {
-        const {todos} = this.props;
+        const {todos, onDeleted} = this.props;
         
         const elements = todos.map((item) => {
 
@@ -14,7 +14,10 @@ export default class TodoList extends Component {
     
             return (
                 <li key={id} className="list-group-item">
-                    <TodoListItem {...itemProps}/>
+                    <TodoListItem 
+                        {...itemProps}
+                        onDeleted={() => onDeleted(id)}
+                    />
                 </li>
             );
         });
