@@ -56,6 +56,7 @@ export default class App extends Component {
     };
 
     addItem = (text) => {
+         
         const newItem = this.createTodoItem(text);
 
         this.setState(({todoData}) => {
