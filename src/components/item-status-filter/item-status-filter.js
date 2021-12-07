@@ -4,15 +4,23 @@ import "./item-status-filter.css"
 
 export default class ItemStatusFilter extends Component {
 
+    state = {
+        focus: false
+    };
+
+
+
     render () {
         return (
             <div className="btn-group">
               <button type="button"
-                      className="btn btn-info">All</button>
+                    className="btn btn-info">All</button>
               <button type="button"
-                      className="btn btn-outline-secondary">Active</button>
+                    className="btn btn-outline-secondary "
+                    onClick={this.props.onActiveStatusFilter}>Active</button>
               <button type="button"
-                      className="btn btn-outline-secondary">Done</button>
+                    className="btn btn-outline-secondary"
+                    onClick={this.props.onDoneStatusFilter}>Done</button>
             </div>
         );
     };

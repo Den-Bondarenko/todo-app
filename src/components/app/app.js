@@ -87,15 +87,28 @@ export default class App extends Component {
         });
     }
 
+    onActiveStatusFilter = () => {
+        this.setState(({todoData}) => {
+            return {
+                todoData: todoData.slice().filter((el) => !el.done)
+            };
+        });
+    };
+
+    onDoneStatusFilter = () => {
+        this.setState(({todoData}) => {
+            return {
+                todoData: todoData.slice().filter((el) => el.done)
+            };
+        });
+    };
+
 
 
     render () {
 
         const {todoData} = this.state;
-
-        const doneCount = todoData
-                          .filter((el) => el.done).length;
-        
+        const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
 
         return (
@@ -103,7 +116,10 @@ export default class App extends Component {
                 <AppHeader toDo={todoCount} done={doneCount}/>
                 <div className="top-panel d-flex">
                     <SearchPanel/>
-                    <ItemStatusFilter/>
+                    <ItemStatusFilter
+                        onActiveStatusFilter={this.onActiveStatusFilter}
+                        onDoneStatusFilter={this.onDoneStatusFilter}
+                    />
                 </div>
     
                 <TodoList 
